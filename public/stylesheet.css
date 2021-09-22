@@ -3,22 +3,20 @@ body {
   background-color: hsl(60, 100%, 97%);
 }
 
-header {
+header,
+footer {
   height: 5vh;
   background-color: hsl(214, 69%, 15%);
   color: hsl(44, 68%, 77%);
 }
 
-#page-title {
-  margin: 0, auto;
-  /* font-family: "Roboto", sans-serif; */
+h1 {
   font-family: "Lobster", cursive;
   letter-spacing: 0.2em;
-  font-size: 25px;
 }
 
-textarea {
-  width: 100%;
+p {
+  font-size: 13px;
 }
 
 .card {
@@ -37,15 +35,4 @@ textarea {
 
 .fa-times-circle {
   color: hsl(0, 60%, 50%);
-}
-
-footer {
-  height: 5vh;
-  width: 100%;
-  background-color: hsl(214, 69%, 15%);
-  color: hsl(44, 68%, 77%);
-}
-
-#footer-msg {
-  font-size: 13px;
 }

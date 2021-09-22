@@ -45,11 +45,9 @@ class NoteService {
     return this.init().then((notesDataParsed) => {
       if (notesDataParsed[user]) {
         notesDataParsed[user].push(note);
-        console.log("I'm adding note (user = true)");
         return this.write(notesDataParsed);
       } else {
         notesDataParsed[user] = new Array(note);
-        console.log("I'm adding note (user = false)");
         return this.write(notesDataParsed);
       }
     });
@@ -58,7 +56,6 @@ class NoteService {
   editNote(note, index, user) {
     return this.init().then((notesDataParsed) => {
       notesDataParsed[user][index] = note;
-      console.log("I'm editing note, index = ", index);
       return this.write(notesDataParsed);
     });
   }
@@ -66,22 +63,9 @@ class NoteService {
   deleteNote(index, user) {
     return this.init().then((notesDataParsed) => {
       notesDataParsed[user].splice(index, 1);
-      console.log("I'm deleting note, index = ", index);
       return this.write(notesDataParsed);
     });
   }
 }
 
 module.exports = NoteService;
-
-// read() {
-//   return new Promise((resolve, reject) => {
-//     fs.readFile(__dirname + this.file, "utf-8", (err, data) => {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       }
-//       resolve(data);
-//     });
-//   });
-// }

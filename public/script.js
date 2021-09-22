@@ -1,5 +1,3 @@
-// ERR_CONNECTION_REFUSED occationally occur
-
 // Ajax post request
 $("#new-note-form").submit((event) => {
   event.preventDefault();
@@ -47,12 +45,3 @@ $(".old-note-textarea").click((event) => {
     $(e.target).closest("form").find("textarea").val(oldNote);
   });
 });
-
-// Hide & show
-// $(".delete-btn").hide();
-// $(".note-card").mouseenter((event) => {
-//   $(event.target).find("button").show();
-// });
-// $(".note-card").mouseleave((event) => {
-//   $(event.target).find("button").hide();
-// });

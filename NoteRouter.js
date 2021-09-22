@@ -15,7 +15,6 @@ class NoteRouter {
   }
 
   get(req, res) {
-    console.log("GET request");
     this.noteService
       .listNote(req.auth.user)
       .then((notesDataParsed) => {
@@ -29,7 +28,6 @@ class NoteRouter {
   }
 
   post(req, res) {
-    console.log("POST request");
     this.noteService.addNote(req.body.note, req.auth.user).then(() => {
       this.noteService
         .listNote(req.auth.user)
@@ -45,7 +43,6 @@ class NoteRouter {
   }
 
   put(req, res) {
-    console.log("PUT request");
     this.noteService
       .editNote(req.body.note, req.params.index, req.auth.user)
       .then(() => {
@@ -63,7 +60,6 @@ class NoteRouter {
   }
 
   delete(req, res) {
-    console.log("DELETE request");
     this.noteService.deleteNote(req.params.index, req.auth.user).then(() => {
       this.noteService
         .listNote(req.auth.user)
