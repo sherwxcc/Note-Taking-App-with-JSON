@@ -57,26 +57,22 @@ describe("Routes tests", () => {
       });
   });
 
-  test("Should return 404 if the route is incorrect", (done) => {
+  test("Authorized user: Should return 404 if the route is incorrect", (done) => {
+    let auth = "Basic c2hlcm1hbjoxMjM=";
     request(app)
-      .get("/nosuchpath")
-      .auth("sherman", "123")
-      .expect(404)
-      .end((err, res) => {
-        if (err) throw err;
-        done();
-      });
+      .get("/randompath")
+      .set("Authorization", auth)
+      .expect(404, done)
+      .end();
   });
 
-  test("GET'/': Should return the index page", (done) => {
+  test("Authorized user: GET'/' Should return the index page", (done) => {
+    let auth = "Basic c2hlcm1hbjoxMjM=";
     request(app)
       .get("/")
-      .auth("sherman", "123")
+      .set("Authorization", auth)
       .expect("Content-Type", "text/html; charset=utf-8")
-      .expect(200)
-      .end((err, res) => {
-        if (err) throw err;
-        done();
-      });
+      .expect(200, done)
+      .end();
   });
 });

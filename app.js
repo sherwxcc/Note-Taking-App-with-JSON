@@ -11,34 +11,20 @@ app.set("view engine", "handlebars");
 // Set up basic auth
 const fs = require("fs");
 const basicAuth = require("express-basic-auth");
-const myAuthorizer = (usernameInput, passwordInput, callback) => {
-  const USERS = fs.readFileSync(
-    "./data/userData.json",
-    "utf-8",
-    async (err, data) => {
-      if (err) {
-        throw err;
-      }
-      return await data;
-    }
-  );
-  let parsed = JSON.parse(USERS);
-  let user = parsed.users.filter((user) => user.username == usernameInput);
-  if (
-    user[0].username === usernameInput &&
-    user[0].password === passwordInput
-  ) {
-    return callback(null, true);
-  } else {
-    return callback(null, false);
-  }
+const myAuthorizer = (users) => {
+  return (username, password) => {
+    return (
+      typeof users[username] !== "undefined" && users[username] === password
+    );
+  };
 };
+
 app.use(
   basicAuth({
-    authorizer: myAuthorizer,
+    authorizer: myAuthorizer(
+      JSON.parse(fs.readFileSync("./data/userData.json"))
+    ),
     challenge: true,
-    authorizeAsync: true,
-    realm: "Note Taking App",
   })
 );
 

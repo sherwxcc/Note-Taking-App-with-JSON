@@ -1,12 +1,4 @@
 {
-  "users": [
-    {
-      "username": "sherman",
-      "password": "123"
-    },
-    {
-      "username": "elon",
-      "password": "musk"
-    }
-  ]
+"sherman" : "123",
+"elon" : "musk"
 }
